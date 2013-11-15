@@ -32,15 +32,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :test do
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
-  gem 'capybara'
-  gem 'simplecov'
-  gem 'coveralls', require: false
-end
+gem 'devise'
+
+gem 'factory_girl_rails', '~> 4.0'
+gem 'rspec-rails'
+gem 'shoulda-matchers'
+gem 'database_cleaner'
+gem 'capybara'
+gem 'simplecov'
+gem 'coveralls', require: false
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
