@@ -1,7 +1,13 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/project.rb": [
+        1,
+        1,
+        1,
+        null
+      ]
     },
-    "timestamp": 1384477211
+    "timestamp": 1384479795
   }
 }
