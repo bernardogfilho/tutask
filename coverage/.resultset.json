@@ -5,9 +5,17 @@
         1,
         1,
         1,
+        1,
+        null
+      ],
+      "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/task.rb": [
+        1,
+        1,
+        null,
+        1,
         null
       ]
     },
-    "timestamp": 1384479795
+    "timestamp": 1384547649
   }
 }
