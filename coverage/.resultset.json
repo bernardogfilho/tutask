@@ -1,6 +1,12 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/answer.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/project.rb": [
         1,
         1,
@@ -9,6 +15,7 @@
         null
       ],
       "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/question.rb": [
+        1,
         1,
         1,
         1,
@@ -23,6 +30,6 @@
         null
       ]
     },
-    "timestamp": 1384553742
+    "timestamp": 1384554049
   }
 }
