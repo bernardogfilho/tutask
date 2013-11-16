@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Answer do
-  it {should belong_to :question}
+describe Post do
+  it {should validate_presence_of :title}
   it {should validate_presence_of :content}
   it {should have_a_valid_factory}
 end

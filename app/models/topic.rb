@@ -1,5 +1,3 @@
-class Topic < ActiveRecord::Base
-  validates :title, presence: true
-  
+class Topic < Post  
   belongs_to :project
 end

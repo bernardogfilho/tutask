@@ -11,17 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116130425) do
+ActiveRecord::Schema.define(version: 20131116163228) do
 
   create_table "answers", force: true do |t|
     t.text     "content"
-    t.boolean  "chosen"
+    t.boolean  "chosen",      null: false
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+
+  create_table "posts", force: true do |t|
+    t.string   "type"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "project_id"
+    t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["project_id"], name: "index_posts_on_project_id"
+  add_index "posts", ["task_id"], name: "index_posts_on_task_id"
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -38,16 +51,6 @@ ActiveRecord::Schema.define(version: 20131116130425) do
   add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id"
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id"
 
-  create_table "questions", force: true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "task_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "questions", ["task_id"], name: "index_questions_on_task_id"
-
   create_table "tasks", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -58,16 +61,6 @@ ActiveRecord::Schema.define(version: 20131116130425) do
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
-
-  create_table "topics", force: true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "topics", ["project_id"], name: "index_topics_on_project_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -1,5 +1,4 @@
-class Question < ActiveRecord::Base
-  validates :title, presence: true
+class Question < Post
   belongs_to :task
   has_many :answers
 end
