@@ -10,6 +10,8 @@
       "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/project.rb": [
         1,
         1,
+        null,
+        1,
         1,
         1,
         null
@@ -28,8 +30,15 @@
         1,
         1,
         null
+      ],
+      "/Users/bernardog/Workspace/Rails/4Soft/tutasks/app/models/topic.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
       ]
     },
-    "timestamp": 1384554049
+    "timestamp": 1384607356
   }
 }
