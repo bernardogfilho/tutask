@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   validates :title, presence: true
+  # validates_presence_of :title
 
   has_many :topics
   has_many :tasks
