@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116172031) do
+ActiveRecord::Schema.define(version: 20131118122707) do
 
   create_table "answers", force: true do |t|
     t.text     "content"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20131116172031) do
   end
 
   add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
+
+  create_table "groups_owners_join_table", id: false, force: true do |t|
+    t.integer "user_id",    null: false
+    t.integer "project_id", null: false
+  end
+
+  add_index "groups_owners_join_table", ["project_id"], name: "index_groups_owners_join_table_on_project_id"
+  add_index "groups_owners_join_table", ["user_id"], name: "index_groups_owners_join_table_on_user_id"
 
   create_table "posts", force: true do |t|
     t.string   "type"
