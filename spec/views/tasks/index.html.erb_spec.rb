@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "tasks/index" do
+describe "projects/1/tasks/index" do
   before(:each) do
     assign(:tasks, [
       stub_model(Task),
