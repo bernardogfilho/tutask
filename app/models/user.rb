@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   validates :name, presence: true, on: :update
 
   has_and_belongs_to_many :projects
+  has_and_belongs_to_many :owned_projects, class_name: "Project", join_table: "groups_owners_join_table"
 end
