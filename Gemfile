@@ -27,6 +27,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'newrelic_rpm'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -34,13 +36,17 @@ end
 
 gem 'devise'
 
-gem 'factory_girl_rails', '~> 4.0'
-gem 'rspec-rails'
-gem 'shoulda-matchers'
-gem 'database_cleaner'
-gem 'capybara'
-gem 'simplecov'
-gem 'coveralls', require: false
+gem 'simple_form'
+
+group :test, :development do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'simplecov'
+  gem 'coveralls', require: false
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
