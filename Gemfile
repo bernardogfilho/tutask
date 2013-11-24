@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -46,6 +47,12 @@ group :test, :development do
   gem 'capybara'
   gem 'simplecov'
   gem 'coveralls', require: false
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-rspec', require: false
+
 end
 
 # Use ActiveModel has_secure_password
