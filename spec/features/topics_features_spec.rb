@@ -75,4 +75,16 @@ feature 'Topics features' do
     end
   end
 
+  context 'Destroy' do
+    
+    background do
+      @topic = FactoryGirl.create :topic
+      visit 'projects/1/topics/1'
+    end
+
+    scenario 'successfully' do
+      click_on 'Delete'
+    end
+  end
+
 end
