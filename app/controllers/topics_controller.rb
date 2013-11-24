@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @project = Project.find(params[:project_id])
+    @topics = @project.topics
   end
 
   # GET /topics/1
@@ -21,13 +22,14 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
+    @project = Project.find params[:project_id]
   end
 
   # POST /topics
   # POST /topics.json
   def create
     @project = Project.find(params[:project_id])
-    @topic = Topic.new(topic_params)
+    @topic = @project.topics.build(topic_params)
 
     respond_to do |format|
       if @topic.save
@@ -43,9 +45,10 @@ class TopicsController < ApplicationController
   # PATCH/PUT /topics/1
   # PATCH/PUT /topics/1.json
   def update
+    @project = Project.find params[:project_id]
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to project_topic_path(@project, @topic), notice: 'Topic was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

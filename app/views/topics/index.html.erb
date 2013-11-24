@@ -1,8 +1,9 @@
-<h1>Listing topics</h1>
+<h1>Listing topics of <%= @project.title %></h1>
 
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,9 +13,10 @@
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= topic.title %></td>
+        <td><%= link_to 'Show', project_topic_path(@project, topic) %></td>
+        <td><%= link_to 'Edit', edit_project_topic_path(@project, topic) %></td>
+        <td><%= link_to 'Destroy', project_topic_path(@project, topic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
+<%= link_to 'New Topic', new_project_topic_path(@project)%>
