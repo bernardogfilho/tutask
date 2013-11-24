@@ -1,4 +1,5 @@
 Tutasks::Application.routes.draw do
+  get "home/index"
   devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +7,7 @@ Tutasks::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -16,7 +18,9 @@ Tutasks::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
 
   # Example resource route with options:
   #   resources :products do

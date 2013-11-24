@@ -5,6 +5,6 @@ FactoryGirl.define do
     title "MyString"
     description "MyText"
     completed false
-    project nil
+    project
   end
 end
