@@ -6,8 +6,8 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'coveralls'
 
-# Coveralls.wear! 'rails'
-SimpleCov.start 'rails'
+Coveralls.wear! 'rails'
+# SimpleCov.start 'rails'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
