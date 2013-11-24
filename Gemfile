@@ -5,8 +5,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -40,6 +38,7 @@ gem 'devise'
 gem 'simple_form'
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
@@ -52,7 +51,10 @@ end
 group :development do
   gem 'guard'
   gem 'guard-rspec', require: false
+end
 
+group :production do
+  gem 'pg'
 end
 
 # Use ActiveModel has_secure_password
