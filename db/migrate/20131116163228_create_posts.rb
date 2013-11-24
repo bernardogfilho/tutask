@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.references :project, index: true
       t.references :task, index: true
+      t.references :user, index: true
 
       t.timestamps
     end
