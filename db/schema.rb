@@ -46,12 +46,14 @@ ActiveRecord::Schema.define(version: 20131118122707) do
     t.text     "content"
     t.integer  "project_id"
     t.integer  "task_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "posts", ["project_id"], name: "index_posts_on_project_id"
   add_index "posts", ["task_id"], name: "index_posts_on_task_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "projects", force: true do |t|
     t.string   "title"
