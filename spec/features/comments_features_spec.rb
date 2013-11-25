@@ -4,12 +4,12 @@ feature 'Comment' do
   
   background do
     @topic = FactoryGirl.create :topic
-    visit '/projects/1/topics/1/'  
   end
 
   context 'Index' do
     background do
-      @comment = FactoryGirl.create :comment
+      @comment = FactoryGirl.create :comment, topic: @topic
+      visit '/projects/1/topics/1/'  
     end
     scenario 'returns all comments from a topic' do
       expect(page).to have_content @comment.content
@@ -17,6 +17,9 @@ feature 'Comment' do
   end
 
   context 'Create' do
+    background do
+      visit '/projects/1/topics/1'
+    end
     scenario 'with correct inputs' do
       fill_in 'comment[content]', with: 'Hey, nice topic!'
       click_on 'Comment'
