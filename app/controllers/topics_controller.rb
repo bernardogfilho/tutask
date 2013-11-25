@@ -12,6 +12,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @project = Project.find(params[:project_id])
+    @comment = Comment.new
   end
 
   # GET /topics/new
