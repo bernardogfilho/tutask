@@ -26,6 +26,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find params[:project_id]
+    @topic = Topic.find params[:topic_id]
+    @comment.destroy
+    redirect_to project_topic_path(@project, @topic)
+  end
+
   private
 
   def set_comment

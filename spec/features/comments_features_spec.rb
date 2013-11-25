@@ -42,4 +42,15 @@ feature 'Comment' do
     end
   end
 
+  context 'Destroy' do
+    background do
+      @comment = FactoryGirl.create :comment, topic: @topic
+      visit '/projects/1/topics/1/'
+    end
+    scenario 'successfully' do
+      click_on 'Delete Comment'
+      expect(page).to have_no_content(@comment.content)
+    end
+  end
+
 end
