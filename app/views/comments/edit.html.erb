@@ -1,0 +1,5 @@
+<%= simple_form_for [@project, @topic, @comment], url: {action: :update} do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :content %>
+  <%= f.button :submit, "Update Comment" %>
+<% end %>

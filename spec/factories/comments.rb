@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :comment do
-    content "MyText"
-    topic nil
+    content "Comment content"
+    topic
+    # user
   end
 end

@@ -20,7 +20,9 @@ Tutasks::Application.routes.draw do
 
   resources :projects do
     resources :tasks
-    resources :topics
+    resources :topics do
+      resources :comments
+    end
   end
 
   # Example resource route with options:
