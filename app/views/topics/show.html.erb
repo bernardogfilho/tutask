@@ -7,6 +7,7 @@
     <% @topic.comments.each do |comment| %>
       <li>
         <%= comment.content %>
+        <%=link_to 'Edit Comment', edit_project_topic_comment_path(@project, @topic, comment) %>
       </li>
     <% end %>
 </ul>
