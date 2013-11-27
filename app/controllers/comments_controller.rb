@@ -2,11 +2,13 @@ class CommentsController < ApplicationController
   before_action :set_variables, only: [:show, :edit, :update, :destroy]
 
   def create
+    @project = Project.find params[:project_id]
+    @topic = Topic.find params[:topic_id]
     @comment = @topic.comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
-      redirect_to project_topic_path(@project, @topic, @comment)
+      redirect_to project_topic_path(@project, @topic)
     end
   end
 

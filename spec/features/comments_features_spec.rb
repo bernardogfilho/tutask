@@ -12,7 +12,7 @@ feature 'Comment' do
   context 'Index' do
     background do
       @comment = FactoryGirl.create :comment, topic: @topic
-      visit '/projects/1/topics/1/'  
+      visit "/projects/#{@topic.project.id}/topics/#{@topic.id}/"
     end
     scenario 'returns all comments from a topic' do
       expect(page).to have_content @comment.content
@@ -21,7 +21,7 @@ feature 'Comment' do
 
   context 'Create' do
     background do
-      visit '/projects/1/topics/1'
+      visit "/projects/#{@topic.project.id}/topics/#{@topic.id}"
       fill_in 'comment[content]', with: 'Hey, nice topic!'
       click_on 'Comment'
     end
@@ -36,7 +36,7 @@ feature 'Comment' do
   context 'Update' do
     background do
       @comment = FactoryGirl.create :comment, topic: @topic
-      visit '/projects/1/topics/1/'
+      visit "/projects/#{@topic.project.id}/topics/#{@topic.id}/"
       click_link 'Edit Comment'
     end
     scenario 'with correct inputs' do
@@ -54,7 +54,7 @@ feature 'Comment' do
   context 'Destroy' do
     background do
       @comment = FactoryGirl.create :comment, topic: @topic
-      visit '/projects/1/topics/1/'
+      visit "/projects/#{@topic.project.id}/topics/#{@topic.id}/"
     end
     scenario 'successfully' do
       click_on 'Delete Comment'
