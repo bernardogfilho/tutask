@@ -4,7 +4,6 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @project = Project.find(params[:project_id])
     @topics = @project.topics
   end
 
@@ -17,13 +16,11 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
-    @project = Project.find(params[:project_id])
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
-    @project = Project.find params[:project_id]
   end
 
   # POST /topics
@@ -46,7 +43,6 @@ class TopicsController < ApplicationController
   # PATCH/PUT /topics/1
   # PATCH/PUT /topics/1.json
   def update
-    @project = Project.find params[:project_id]
     respond_to do |format|
       if @topic.update(topic_params)
         format.html { redirect_to project_topic_path(@project, @topic), notice: 'Topic was successfully updated.' }
@@ -61,7 +57,6 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    @project = Project.find params[:project_id]
     @topic.destroy
     respond_to do |format|
       format.html { redirect_to project_topics_path @project }
