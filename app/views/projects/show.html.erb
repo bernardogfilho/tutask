@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h4><%= @project.title %></h4>
+<strong>Owner <%= @project.owners.first.email %></strong>
+<%= @project.description %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Delete', @project, method: "delete" %> |

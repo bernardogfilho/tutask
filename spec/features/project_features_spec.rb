@@ -14,10 +14,19 @@ feature 'Project Features' do
       visit 'projects/new'
     end
 
-    scenario 'with correct inputs' do
-      fill_in 'project[title]', with: 'Project title'
-      fill_in 'project[description]', with: 'Project description'
-      click_on 'Save'
+    context 'with correct inputs' do
+      background do
+        fill_in 'project[title]', with: 'Project title'
+        fill_in 'project[description]', with: 'Project description'
+        click_on 'Save'
+      end
+      scenario 'it displays the project' do
+        expect(page).to have_content 'Project title'
+      end
+      scenario 'it displays the owner of the project' do
+        expect(page).to have_content @user.email
+      end
+      
     end
 
     scenario 'with incorrect inputs' do
@@ -29,8 +38,8 @@ feature 'Project Features' do
   context 'Update' do
 
     background do
-      FactoryGirl.create :project
-      visit 'projects/1/edit'
+      @project = FactoryGirl.create :project, owners: [@user]
+      visit "projects/#{@project.id}/edit"
     end
 
     scenario 'with correct inputs' do
@@ -48,8 +57,8 @@ feature 'Project Features' do
   context 'Destroy' do
     
     background do
-      FactoryGirl.create :project
-      visit 'projects/1'
+      @project = FactoryGirl.create :project, owners: [@user]
+      visit "projects/#{@project.id}"
     end
 
     scenario 'successfully' do

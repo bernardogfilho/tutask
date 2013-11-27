@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
+    @project = Project.find(params[:project_id])  
     @topics = @project.topics
   end
 
@@ -16,6 +17,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
+    @project = Project.find(params[:project_id])  
     @topic = Topic.new
   end
 
@@ -28,6 +30,7 @@ class TopicsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @topic = @project.topics.build(topic_params)
+    @topic.user = current_user
 
     respond_to do |format|
       if @topic.save
