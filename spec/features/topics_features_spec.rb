@@ -11,8 +11,8 @@ feature 'Topics features' do
 
   context 'Index' do
     background do
-      visit  'projects/1/topics'
-      @topic = FactoryGirl.create :topic
+      visit  "projects/#{@project.id}/topics"
+      @topic = FactoryGirl.create :topic, project: @project
     end
 
     scenario 'returns all saved topics' do
@@ -21,15 +21,22 @@ feature 'Topics features' do
   end
 
   context 'Create' do
-    
     background do
-      visit 'projects/1/topics/new'
+      visit "projects/#{@project.id}/topics/new"
     end
+    context 'with correct inputs' do
+      background do
+        fill_in 'topic[title]', with: 'Topic title'
+        fill_in 'topic[content]', with: 'Topic content'
+        click_on 'Save'
+      end
+      scenario 'it saves and display the topic' do
+        expect(page).to have_content 'Topic content'
+      end
 
-    scenario 'with correct inputs' do
-      fill_in 'topic[title]', with: 'Topic title'
-      fill_in 'topic[content]', with: 'Topic content'
-      click_on 'Save'
+      scenario 'it saves and display the author' do
+        expect(page).to have_content @user.email
+      end
     end
 
     context 'with incorrect inputs' do
@@ -51,8 +58,8 @@ feature 'Topics features' do
   context 'Update' do
     
     background do
-      @topic = FactoryGirl.create :topic
-      visit 'projects/1/topics/1/edit'
+      @topic = FactoryGirl.create :topic, project: @project
+      visit "projects/#{@project.id}/topics/#{@topic.id}/edit"
     end
 
     scenario 'with correct inputs' do
@@ -78,8 +85,8 @@ feature 'Topics features' do
   context 'Destroy' do
     
     background do
-      @topic = FactoryGirl.create :topic
-      visit 'projects/1/topics/1'
+      @topic = FactoryGirl.create :topic, project: @project
+      visit "projects/#{@project.id}/topics/#{@topic.id}"
     end
 
     scenario 'successfully' do

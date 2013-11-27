@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :project do
     title "MyString"
     description "MyText"
-    # user
+    owners {[FactoryGirl.create(:user)]}
   end
 end

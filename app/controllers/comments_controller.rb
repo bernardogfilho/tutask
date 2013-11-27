@@ -1,24 +1,21 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_variables, only: [:show, :edit, :update, :destroy]
 
   def create
     @project = Project.find params[:project_id]
     @topic = Topic.find params[:topic_id]
     @comment = @topic.comments.build(comment_params)
+    @comment.user = current_user
 
     if @comment.save
-      redirect_to project_topic_path(@project, @topic, @comment)
+      redirect_to project_topic_path(@project, @topic)
     end
   end
 
   def edit
-    @project = Project.find params[:project_id]
-    @topic = Topic.find params[:topic_id]
   end
 
   def update
-    @project = Project.find params[:project_id]
-    @topic = Topic.find params[:topic_id]
     if @comment.update(comment_params)
       redirect_to project_topic_path(@project, @topic)
     else
@@ -27,15 +24,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find params[:project_id]
-    @topic = Topic.find params[:topic_id]
     @comment.destroy
     redirect_to project_topic_path(@project, @topic)
   end
 
   private
 
-  def set_comment
+  def set_variables
+    @project = Project.find params[:project_id]
+    @topic = Topic.find params[:topic_id]
     @comment = Comment.find(params[:id])
   end
 

@@ -4,26 +4,25 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])  
     @topics = @project.topics
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @project = Project.find(params[:project_id])
+    @project = @topic.project
     @comment = Comment.new
   end
 
   # GET /topics/new
   def new
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])  
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
-    @project = Project.find params[:project_id]
   end
 
   # POST /topics
@@ -31,6 +30,7 @@ class TopicsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @topic = @project.topics.build(topic_params)
+    @topic.user = current_user
 
     respond_to do |format|
       if @topic.save
@@ -46,7 +46,6 @@ class TopicsController < ApplicationController
   # PATCH/PUT /topics/1
   # PATCH/PUT /topics/1.json
   def update
-    @project = Project.find params[:project_id]
     respond_to do |format|
       if @topic.update(topic_params)
         format.html { redirect_to project_topic_path(@project, @topic), notice: 'Topic was successfully updated.' }
@@ -61,7 +60,6 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    @project = Project.find params[:project_id]
     @topic.destroy
     respond_to do |format|
       format.html { redirect_to project_topics_path @project }
@@ -72,7 +70,8 @@ class TopicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
-      @topic = Topic.find(params[:id])
+      @project = Project.find(params[:project_id])
+      @topic = @project.topics.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
