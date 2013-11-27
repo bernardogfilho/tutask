@@ -46,6 +46,7 @@ group :test, :development do
   gem 'capybara'
   gem 'simplecov'
   gem 'coveralls', require: false
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
