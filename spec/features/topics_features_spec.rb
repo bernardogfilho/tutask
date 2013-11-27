@@ -11,7 +11,7 @@ feature 'Topics features' do
 
   context 'Index' do
     background do
-      visit  'projects/1/topics'
+      visit  "projects/#{@project.id}/topics"
       @topic = FactoryGirl.create :topic
     end
 
@@ -23,7 +23,7 @@ feature 'Topics features' do
   context 'Create' do
     
     background do
-      visit 'projects/1/topics/new'
+      visit "projects/#{@project.id}/topics/new"
     end
 
     scenario 'with correct inputs' do
@@ -51,8 +51,8 @@ feature 'Topics features' do
   context 'Update' do
     
     background do
-      @topic = FactoryGirl.create :topic
-      visit 'projects/1/topics/1/edit'
+      @topic = FactoryGirl.create :topic, project: @project
+      visit "projects/#{@project.id}/topics/#{@topic.id}/edit"
     end
 
     scenario 'with correct inputs' do
@@ -78,8 +78,8 @@ feature 'Topics features' do
   context 'Destroy' do
     
     background do
-      @topic = FactoryGirl.create :topic
-      visit 'projects/1/topics/1'
+      @topic = FactoryGirl.create :topic, project: @project
+      visit "projects/#{@project.id}/topics/#{@topic.id}"
     end
 
     scenario 'successfully' do

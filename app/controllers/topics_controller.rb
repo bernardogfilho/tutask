@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @project = Project.find(params[:project_id])
+    @project = @topic.project
     @comment = Comment.new
   end
 
@@ -72,7 +72,8 @@ class TopicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
-      @topic = Topic.find(params[:id])
+      @project = Project.find(params[:project_id])
+      @topic = @project.topics.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

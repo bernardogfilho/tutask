@@ -7,6 +7,7 @@
     <% @topic.comments.each do |comment| %>
       <li>
         <%= comment.content %>
+        <strong>By <%= comment.user.email if comment.user%></strong>
         <%=link_to 'Edit Comment', edit_project_topic_comment_path(@project, @topic, comment) %>
         <%= link_to 'Delete Comment', project_topic_comment_path(@project, @topic, comment), method: :delete %>
       </li>

@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 feature 'Comment' do
+  include Features::SessionHelpers
   
   background do
     @topic = FactoryGirl.create :topic
+    @user = FactoryGirl.create :user
+    sign_in @user
   end
 
   context 'Index' do
@@ -19,11 +22,14 @@ feature 'Comment' do
   context 'Create' do
     background do
       visit '/projects/1/topics/1'
-    end
-    scenario 'with correct inputs' do
       fill_in 'comment[content]', with: 'Hey, nice topic!'
       click_on 'Comment'
+    end
+    scenario 'with correct inputs' do
       expect(page).to have_content 'Hey, nice topic!'
+    end
+    scenario 'shows the user email' do
+      expect(page).to have_content "By #{@user.email}"
     end
   end
 
