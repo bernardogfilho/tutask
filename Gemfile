@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'newrelic_rpm'
 
+gem 'foundation-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -52,6 +54,7 @@ end
 group :development do
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'guard-livereload', require: false
 end
 
 group :production do
