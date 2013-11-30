@@ -5,6 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.text :description
       t.boolean :completed
       t.references :project, index: true
+      t.integer :owner_id, index: true, class_name: "User"
 
       t.timestamps
     end

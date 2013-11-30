@@ -6,7 +6,7 @@ feature 'Task Features' do
   background do
     @user = FactoryGirl.create :user
     sign_in @user
-    @project = FactoryGirl.create :project
+    @project = FactoryGirl.create :project, owners: [@user]
   end
 
   context 'Create' do
@@ -15,13 +15,13 @@ feature 'Task Features' do
       visit 'projects/1/tasks/new'
     end
 
-    scenario 'with correct inputs' do
+    scenario 'with correct inputs create the task successfully' do
       fill_in 'task[title]', with: 'Task title'
       fill_in 'task[description]', with: 'Task description'
       click_on 'Save'
     end
 
-    scenario 'with incorrect inputs' do
+    scenario 'with incorrect inputs displays a message error amd doest not create the task' do
       fill_in 'task[title]', with: ''
       click_on 'Save'
     end
@@ -35,13 +35,13 @@ feature 'Task Features' do
       visit edit_project_task_path(@task.project, @task)
     end
 
-    scenario 'with correct inputs' do
+    scenario 'with correct inputs update the task successfully' do
       fill_in 'task_title', with: 'Updated title'
       fill_in 'task_description', with: 'Updated description'
       click_on 'Save'
     end
 
-    scenario 'with incorrect inputs' do
+    scenario 'with incorrect inputs does not create the task and displays a message error' do
       fill_in 'task_title', with: ''
       click_on 'Save'
     end

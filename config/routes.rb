@@ -18,6 +18,8 @@ Tutasks::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  get 'tasks' => 'tasks#index'
+
   resources :projects do
     resources :tasks
     resources :topics do

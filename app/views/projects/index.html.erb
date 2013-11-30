@@ -1,34 +1,31 @@
 <div class="row">
-  <div class="small-12 medium-3 columns">
-    <ul class="side-nav">
-      <li><%= link_to "Create new project", new_project_path %></li>
-    </ul>
-  </div>
+  <%= render partial: "layouts/sidebar" %>
   <div class="small-12 medium-9 columns">
-    <h1>Listing projects</h1>
+    <h4>My projects</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae sagittis turpis. Fusce vitae dui eu mauris ultricies consequat.</p>
+
+    <%= link_to "Create New Project", new_project_path, class: "button small pull-right" %>
+
+    <h5>My owned projects</h5>
 
     <table>
-      <thead>
+      <% @owned_projects.each do |project| %>
         <tr>
-          <th>Project</th>
-          <th>Description</th>
-          <th></th>
+          <td><%= link_to project.title, project %></td>
+          <td><%= project.description %></td>
         </tr>
-      </thead>
+      <% end %>
+    </table>
 
-      <tbody>
-        <% @projects.each do |project| %>
-          <tr>
-            <td><%= project.title %></td>
-            <td><%= project.description %></td>
-            <td>
-              <%= link_to 'Show', project %>
-              <%= link_to 'Edit', edit_project_path(project) %>
-              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
+    <h5>Others projects I'm participating</h5>
+
+    <table>
+      <% @participating_projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.title, project %></td>
+          <td><%= project.description %>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

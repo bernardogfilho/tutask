@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118122707) do
+ActiveRecord::Schema.define(version: 20131130190526) do
 
   create_table "answers", force: true do |t|
     t.text     "content"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20131118122707) do
     t.text     "description"
     t.boolean  "completed"
     t.integer  "project_id"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,5 +103,13 @@ ActiveRecord::Schema.define(version: 20131118122707) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_tasks_join_table", id: false, force: true do |t|
+    t.integer "user_id", null: false
+    t.integer "task_id", null: false
+  end
+
+  add_index "users_tasks_join_table", ["task_id"], name: "index_users_tasks_join_table_on_task_id"
+  add_index "users_tasks_join_table", ["user_id"], name: "index_users_tasks_join_table_on_user_id"
 
 end

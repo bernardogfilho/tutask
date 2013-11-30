@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :comments
   has_and_belongs_to_many :owned_projects, class_name: "Project", join_table: "groups_owners_join_table"
+  has_many :owned_tasks, class_name: "Task"
+  has_and_belongs_to_many :tasks, join_table: "users_tasks_join_table"
 end

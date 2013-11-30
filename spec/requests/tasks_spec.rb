@@ -6,6 +6,7 @@ describe "Tasks" do
       @project = FactoryGirl.create :project
     end
     it "works! (now write some real specs)" do
+      pending "is not really necessary"
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       get project_tasks_path project_id: @project.id
       response.status.should be(200)

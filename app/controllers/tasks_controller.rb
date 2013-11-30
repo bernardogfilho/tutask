@@ -4,8 +4,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @project = Project.find(params[:project_id])
-    @tasks = @project.tasks
+    @todo = current_user.tasks.todo
+    @completed = current_user.tasks.done
   end
 
   # GET /tasks/1

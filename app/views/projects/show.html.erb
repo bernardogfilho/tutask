@@ -1,7 +1,19 @@
-<h4><%= @project.title %></h4>
-<strong>Owner <%= @project.owners.first.email %></strong>
-<%= @project.description %>
+<div class="row">
+  
+  <%= render partial: "layouts/sidebar" %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Delete', @project, method: "delete" %> |
-<%= link_to 'Back', projects_path %>
+  <div class="small-12 medium-9 columns">
+    <h4><%= @project.title %></h4>
+    <p>Owners:
+    <% @project.owners.each do |owner| %>
+      <%= link_to owner.email, "#" %>
+    <% end %>
+    </p>
+
+    <%= @project.description %>
+
+    <%= link_to 'Edit', edit_project_path(@project) %> |
+    <%= link_to 'Delete', @project, method: "delete" %> |
+    <%= link_to 'Back', projects_path %>
+  </div>
+</div>

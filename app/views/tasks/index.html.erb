@@ -1,27 +1,21 @@
-<h1>Listing tasks</h1>
+<div class="row">
+  <%= render partial: "layouts/sidebar" %>
+  <div class="small-12 medium-9 columns">
+    <h3>My tasks</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae sagittis turpis. Fusce vitae dui eu mauris ultricies consequat.</p>
+    
+    <h5>Tasks todo</h5>
+    
+    <table>
+      <% @todo.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= link_to task.project, task.project %></td>
+          <td><%= task.owner %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= link_to 'Show', project_task_path(task.project, task) %></td>
-        <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-        <td><%= link_to 'Destroy', project_task_path(task.project, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Task', new_project_task_path %>
