@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :title
       t.text :description
-      t.boolean :completed
+      t.boolean :completed, default: false
       t.references :project, index: true
       t.integer :owner_id, index: true, class_name: "User"
 

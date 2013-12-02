@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
-  scope :done, -> { where(completed:true)}
-  scope :todo, -> { where(completed:false)}
+  scope :done, -> { where(completed: true)}
+  scope :todo, -> { where(completed: false)}
   
   validates :title, presence: true
 
