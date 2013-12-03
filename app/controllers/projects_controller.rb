@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @last_todo_tasks = @project.tasks.todo.limit(5)
+    @last_completed_tasks = @project.tasks.done.limit(5)
   end
 
   # GET /projects/new

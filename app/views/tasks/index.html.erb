@@ -4,7 +4,7 @@
     <h3>My tasks</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae sagittis turpis. Fusce vitae dui eu mauris ultricies consequat.</p>
     
-    <h5>Tasks todo</h5>
+    <h5>Todo tasks</h5>
     
     <table>
       <% @todo.each do |task| %>
@@ -12,7 +12,20 @@
           <td><%= task.title %></td>
           <td><%= task.description %></td>
           <td><%= link_to task.project, task.project %></td>
-          <td><%= task.owner %></td>
+          <td><%= task.owner.email %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <h5>Completed tasks</h5>
+
+    <table>
+      <% @completed.each do |task| %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.description %></td>
+          <td><%= link_to task.project, task.project %></td>
+          <td><%= task.owner.email %></td>
         </tr>
       <% end %>
     </table>

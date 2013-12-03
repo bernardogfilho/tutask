@@ -9,6 +9,22 @@ feature 'Task Features' do
     @project = FactoryGirl.create :project, owners: [@user]
   end
 
+  context 'Index' do
+    background do
+      @todo_task = FactoryGirl.create :todo, project: @project, owner: @user, users: [@user]
+      @completed_task = FactoryGirl.create :completed, project: @project, owner: @user, users: [@user]
+      visit '/tasks'
+    end
+
+    scenario 'page list the todo tasks' do
+      expect(page).to have_content @todo_task.title
+    end
+
+    scenario 'page list the completed tasks' do
+      expect(page).to have_content @completed_task.title
+    end
+  end
+
   context 'Create' do
     
     background do

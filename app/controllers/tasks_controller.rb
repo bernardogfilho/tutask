@@ -30,6 +30,7 @@ class TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @task = @project.tasks.build(task_params)
+    @task.owner = current_user
 
     respond_to do |format|
       if @task.save
