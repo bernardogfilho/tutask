@@ -2,8 +2,11 @@
 
 FactoryGirl.define do
   factory :project do
-    title "MyString"
+    sequence :title do |n| 
+      "Projec number #{n}"
+    end
     description "MyText"
     owners {[FactoryGirl.create(:user)]}
+    users {[FactoryGirl.create(:user)]}
   end
 end

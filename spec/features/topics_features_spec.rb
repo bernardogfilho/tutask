@@ -6,13 +6,13 @@ feature 'Topics features' do
   background do
     @user = FactoryGirl.create :user
     sign_in @user
-    @project = FactoryGirl.create :project
+    @project = FactoryGirl.create :project, owners: [@user], users: [@user]
   end
 
   context 'Index' do
     background do
-      visit  "projects/#{@project.id}/topics"
       @topic = FactoryGirl.create :topic, project: @project
+      visit  "projects/#{@project.id}/topics"
     end
 
     scenario 'returns all saved topics' do

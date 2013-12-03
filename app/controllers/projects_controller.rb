@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @last_todo_tasks = @project.tasks.todo.limit(5)
+    @last_completed_tasks = @project.tasks.done.limit(5)
   end
 
   # GET /projects/new
@@ -27,6 +29,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.owners << current_user
+    @project.users << current_user
+    
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }

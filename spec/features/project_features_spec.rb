@@ -8,6 +8,38 @@ feature 'Project Features' do
     sign_in @user
   end
 
+  context 'Show' do
+    
+    background do
+      @project = FactoryGirl.create :project, owners: [@user], users: [@user]
+      @todo_task = FactoryGirl.create :todo, project: @project, owner: @user, users: [@user]
+      @completed_task = FactoryGirl.create :completed, project: @project, owner: @user, users: [@user]
+
+      visit "projects/#{@project.id}"
+    end
+
+    scenario 'page displays the project name' do
+      expect(page).to have_content @project.title
+    end
+
+    scenario 'page displays the project description' do
+      expect(page).to have_content @project.description
+    end
+
+    scenario 'page displays the project owners' do
+      expect(page).to have_content @project.owners.first.email
+    end
+
+    scenario 'page displays the last five todo tasks' do
+      expect(page).to have_content @todo_task.title
+    end
+
+    scenario 'page displays the last completed tasks' do
+      expect(page).to have_content @completed_task.title
+    end
+
+  end
+
   context 'Create' do
     
     background do

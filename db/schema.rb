@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20131130190526) do
   create_table "tasks", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.boolean  "completed"
+    t.boolean  "completed",   default: false
     t.integer  "project_id"
     t.integer  "owner_id"
     t.datetime "created_at"

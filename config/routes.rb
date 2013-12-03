@@ -20,6 +20,8 @@ Tutasks::Application.routes.draw do
 
   get 'tasks' => 'tasks#index'
 
+  get 'dashboard' => 'dashboard#index'
+
   resources :projects do
     resources :tasks
     resources :topics do
