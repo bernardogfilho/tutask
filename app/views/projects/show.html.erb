@@ -16,7 +16,7 @@
     <%= link_to 'Delete', @project, method: "delete" %> |
     <%= link_to 'Back', projects_path %>
 
-    <h5>Last todo tasks</h5>
+    <h5>Lastest todo tasks</h5>
 
     <table>
       <% @last_todo_tasks.each do |task| %>
@@ -27,7 +27,7 @@
       <% end %>
     </table>
 
-    <h5>Last completed tasks</h5>
+    <h5>Lastest completed tasks</h5>
     <table>
       <% @last_completed_tasks.each do |task| %>
         <tr>
